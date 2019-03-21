@@ -1,0 +1,135 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 14-03-2019, 16:47:37
+    Author     : sinanjasar
+*/
+body, html
+{
+    height: 100%;
+    width: 100%;
+}
+body
+{
+    background-image: url('/LegoProject/images/lego.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1
+{
+    color: white;
+    padding-bottom: 20px;
+    font-family: 'Slabo 27px', serif;
+}
+p
+{
+    color: white;
+}
+ul
+{
+    padding-right: 50px;
+}
+li
+{
+    list-style-type: none;
+    color: white;
+}
+a
+{
+    text-decoration: none;
+}
+.a
+{
+    text-decoration: none;
+    color: white;
+
+}
+.a:hover
+{
+    text-decoration: none;
+    color: white;
+}
+
+/* Nav */
+#nav
+{
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /*background-color: #cc8599;*/
+    background-color:rgba(0,0,0,0.9);
+    transition: top 0.3s;
+}
+#nav a
+{
+    text-decoration: none;
+    color: grey;
+    margin: 20px;
+    color: #efefef;
+}
+#nav a.left
+{
+    float: left;
+}
+#nav a.right
+{
+    float: right;
+}
+#nav p
+{
+    float: right;
+    margin: 20px;
+    color: white;
+}
+
+#nav a:hover
+{
+
+    color: white;
+}
+
+/*Login / Register*/
+.div
+{
+    padding-top: 60px;
+}
+form
+{
+    background-color: #cc8599;
+    background-color:rgba(0,0,0,0.9);
+    display: flex;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+.input
+{
+    text-align: center;
+    margin-bottom: 20px; 
+    width: 250px;
+    height: 50px;
+    border-radius: 3px;
+    background-color: grey;
+    color: white;
+    border: 3px;
+}
+
+
+/*table*/
+.tablediv
+{
+    background-color: white;
+}
