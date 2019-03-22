@@ -10,12 +10,10 @@
 {
     response.sendRedirect("login.jsp");
 }%>
-<form action="FrontController" method="post">
+<form action="shop.jsp" method="get">
     <h1>
         Hvad venter du på? Bestil et legohus nu!
     </h1>
     <input class="input btn btn-outline-secondary" type="submit" value="Shop">
-    <input type="hidden" name="command" value="shop">
 </form>
-
 <jsp:include page='/jsp/sitefoot.jsp'></jsp:include>

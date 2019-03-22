@@ -7,7 +7,6 @@ package Presentation;
 
 import Logic.DuplicateException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,45 +29,26 @@ public class FrontController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             Command c = Command.from(request);
+
             c.execute(request, response);
 
-        } catch (IOException | ServletException | DuplicateException e) {
-            System.out.println(e.getMessage());
+        } catch (IOException e1) {
+            
+        } catch (ServletException e2) {
+
+        } catch (DuplicateException e3) {
+            System.out.println(e3.getMessage());
             request.getSession().setAttribute("registerResult", "duplicate");
             response.sendRedirect("/LegoProject/register.jsp");
+        } catch(CommandException e4)
+        {
+            request.getSession().setAttribute("error", e4.getMessage());
+            response.sendRedirect("error.jsp");
         }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**

@@ -26,14 +26,12 @@ public class MyOrdersCommand extends Command {
         List<Order> orders = new ArrayList();
         User user = (User) request.getSession().getAttribute("user");
         int id = user.getUser_id();
-        if(Facade.getOrders(id) != null)
-        {
+        
         for (Order o : Facade.getOrders(id)) {
             orders.add(o);
         }
-        }
         
-        if (orders.get(0).getOrder_id() == 0 || orders.isEmpty() ) {
+        if (orders == null || orders.isEmpty() || orders.get(0).getOrder_id() == 0) {
             request.getSession().setAttribute("result", "noorders");
             request.getRequestDispatcher("myorders.jsp").forward(request, response);
         } else {

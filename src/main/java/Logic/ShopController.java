@@ -17,6 +17,7 @@ public class ShopController {
     public static Bricks calcBricks(int id) {
 
         Order order = Facade.getOrder(id);
+        
         int four = 0;
         int two = 0;
         int one = 0;
@@ -28,21 +29,27 @@ public class ShopController {
         int oneSideL = 0;
         int oneSideW = 0;
 
-        int length = order.getLength(); // 10
-        int width = order.getWidth(); // 4
-        int height = order.getHeight(); // 3
+        int length = order.getLength();
+        int width = order.getWidth();
+        int height = order.getHeight();
+        System.out.println("length: " + length);
+        System.out.println("height: " + height);
+        System.out.println("width: " + width);
 
         for (int i = 1; i <= height; i++) {
 
             if (i % 2 == 1) {
-                length -= 4;
+                width = width - 4;
+                System.out.println("new width: " + width);
             } else {
-                width -= 4;
+                length = length - 4;
+                System.out.println("new length: " +  length);
             }
-            int _four = length / 4 * 2 + width / 4 * 2; // 2 + 2 = 4 | 4 + 2 = 6 | 2 + 2 = 4 == 14  
+            
+            int _four = (length / 4) * 2 + (width / 4) * 2; System.out.println("all fours" + _four);
             fourSideL = length / 4;
             fourSideW = width / 4;
-            int _two = ((length % 4) / 2) * 2 + ((width % 4) / 2) * 2; // 2 | 2 | 2 
+            int _two = ((length % 4) / 2) * 2 + ((width % 4) / 2) * 2; System.out.println("all twos " + _two);
             twoSideL = ((length % 4) / 2);
             twoSideW = ((width % 4) / 2);
             int _one = ((length % 4) % 2) * 2 + ((width % 4) % 2) * 2;
@@ -58,6 +65,6 @@ public class ShopController {
     }
 
     public static void main(String[] args) {
-//        Bricks bricks = calcBricks()
+        System.out.println(calcBricks(6).getFour());
     }
 }

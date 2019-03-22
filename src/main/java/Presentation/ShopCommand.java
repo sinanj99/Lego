@@ -7,12 +7,10 @@ package Presentation;
 
 import Data.Bricks;
 import Data.Order;
-import Data.ShoppingCart;
 import Data.User;
 import Logic.Facade;
 import Logic.ShopController;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,7 +33,7 @@ public class ShopCommand extends Command {
         User user = (User) request.getSession().getAttribute("user");
         int id = user.getUser_id();
         Order o = Facade.insertOrder(id, length, height, width);
-        Bricks bricks = ShopController.calcBricks(o.getOrder_id());
+        Bricks bricks = ShopController.calcBricks(id);
         request.getSession().setAttribute("order", o);
         request.getSession().setAttribute("bricks", bricks);
         
@@ -45,12 +43,14 @@ public class ShopCommand extends Command {
 //        if(request.getSession().getAttribute("cart") == null)
 //        {
 //            request.getSession().setAttribute("cart", cart);
+//            cart.add(o);
 //        }
 //        else
 //        {
 //            cart.add(o);
 //            request.getSession().setAttribute("cart", cart);
 //        }
+
         response.sendRedirect("confirmation.jsp");
         }
         catch(NumberFormatException e)

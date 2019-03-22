@@ -18,7 +18,7 @@
     <input class="input form-control" type="text" name="height" required placeholder="Højde (antal klodser)">
     <input class="input form-control" type="text" name="length" required placeholder="Længde (antal prikker)">
     <input class="input form-control" type="text" name="width" required placeholder="Bredde (antal prikker)">
-    <%if(session.getAttribute("result") != null) { %>
+    <%if(session.getAttribute("result") == "fail") { %>
     <p>Indsæt venligst positive heltal</p>
     <% } %>
     <input class="input btn btn-outline-secondary" type="submit" value="Bestil">

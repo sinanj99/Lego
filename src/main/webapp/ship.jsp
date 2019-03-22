@@ -9,7 +9,7 @@
     <form action="FrontController" method="post">
         <h1>Afsend ordre</h1>
         <input class="form-control input" type="text" name="id" required placeholder="Ordrenummer">
-        <input class="input" type="submit" value="Afsend">
+        <input class="input btn btn-outline-secondary" type="submit" value="Afsend">
         <input type="hidden" name="command" value="ship">
     <% if (session.getAttribute("result") == "fail") { %>
     <p>Indsæt venligst et positivt heltal!</p>

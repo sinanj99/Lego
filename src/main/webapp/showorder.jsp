@@ -2,6 +2,7 @@
 <%@page import="Data.House"%>
 <%@page import="Data.Bricks"%>
 <%@page import="Logic.ShopController"%>
+
 <jsp:include page='/jsp/sitehead.jsp'></jsp:include>
 <jsp:include page='/jsp/sitemenu.jsp'></jsp:include>
 <%
@@ -9,8 +10,7 @@
 {
     response.sendRedirect("login.jsp");
 }
-%>
-<% Bricks bricks = (Bricks) session.getAttribute("bricks");
+    Bricks bricks = (Bricks) session.getAttribute("bricks");
     Order order = (Order) session.getAttribute("order");
     int allFours = bricks.getFour();
     int foursPerLayer = bricks.getFour() / order.getHeight();
@@ -74,5 +74,5 @@
         </table>
     </div>
 </form>
-
+<% session.removeAttribute("bricks"); %>
 <jsp:include page='/jsp/sitefoot.jsp'></jsp:include>

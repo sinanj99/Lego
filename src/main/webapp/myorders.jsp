@@ -4,10 +4,11 @@
 <%@page import="Data.Order"%>
 <jsp:include page='/jsp/sitehead.jsp'></jsp:include>
 <jsp:include page='/jsp/sitemenu.jsp'></jsp:include>
-<% User user = (User) request.getSession().getAttribute("user"); %>
-<% List<Order> orders = (List) request.getSession().getAttribute("orders"); %>
+<% User user = (User) request.getSession().getAttribute("user"); 
+String result = (String) session.getAttribute("result");
+List<Order> orders = (List<Order>) request.getSession().getAttribute("orders"); %>
 <%
-    if(session.getAttribute("user")==null)
+    if(user==null)
 {
     response.sendRedirect("login.jsp");
 } 
@@ -15,7 +16,7 @@
 <div class="div">
 <form>
     <%
-        if (session.getAttribute("result") == "noorders") {
+        if (result == "noorders") {
     %>
     <h1>Du har ingen ordrer!</h1>
     <% } else { %>
@@ -32,5 +33,4 @@
     <% }%>
 </form>
 </div>
-
 <jsp:include page='/jsp/sitefoot.jsp'></jsp:include>

@@ -77,4 +77,5 @@
     </div>
     <a class="a" href="index.jsp" style="margin-top: 30px;">Tilbage til forsiden</a>
 </form>
+<% session.removeAttribute("bricks"); %>
 <jsp:include page='/jsp/sitefoot.jsp'></jsp:include>

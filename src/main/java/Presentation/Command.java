@@ -37,16 +37,17 @@ public abstract class Command {
      * @param request servlet request 
      * @return the correct Command; the value of the key which is the value of
      * the command-parameter
+     * @throws Presentation.CommandException
      */
     
-    public static Command from(HttpServletRequest request) {
+    public static Command from(HttpServletRequest request) throws CommandException {
         
         Command c;
         
         String origin = request.getParameter("command");
-        
         Map<String, Command> commands = new HashMap();
         
+
         commands.put("shop", new ShopCommand());
         commands.put("default", new DefaultCommand());
         commands.put("logout", new LogoutCommand());
@@ -60,8 +61,7 @@ public abstract class Command {
         c = commands.getOrDefault(origin, new UnknownCommand());
         
         return c;
-    }
-    
+        }
     
 }
 
